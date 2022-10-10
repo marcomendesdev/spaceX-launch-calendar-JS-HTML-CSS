@@ -2,8 +2,6 @@ const date = new Date();
 
 const launchDates = [];
 
-
-
 fetch(`https://api.spacexdata.com/v4/launches/upcoming`)
   .then((response) => {
     return response.json();
