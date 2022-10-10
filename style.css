@@ -88,7 +88,7 @@
   width: calc(100% / 7);
   height: 2.5rem;
   background-color: rgb(79, 146, 122);
-  border: 1px solid #fff;
+  border: 2px solid #fff;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -99,7 +99,7 @@
   width: calc(100% / 7);
   height: 2.5rem;
   background-color: rgb(164, 63, 63);
-  border: 1px solid #fff;
+  border: 2px solid #fff;
   color: #fff;
   display: flex;
   justify-content: center;
