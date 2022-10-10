@@ -2,7 +2,7 @@ const date = new Date();
 
 const launchDates = [];
 
-fetch(`https://api.spacexdata.com/v4/launches/upcoming`)
+fetch(`https://api.spacexdata.com/v5/launches/upcoming`)
   .then((response) => {
     return response.json();
   })
@@ -14,6 +14,7 @@ fetch(`https://api.spacexdata.com/v4/launches/upcoming`)
   .then(() => {
     const calendarRender = () => {
       var monthNow = [];
+
       const currentDay = date.getDate();
 
       var currentMonth = date.getMonth();
@@ -27,7 +28,6 @@ fetch(`https://api.spacexdata.com/v4/launches/upcoming`)
           monthNow.push(y);
         }
       });
-      console.log(monthNow);
       var currentDate = new Date().toDateString();
 
       const daysInCurrentMonth = new Date(
@@ -113,6 +113,8 @@ fetch(`https://api.spacexdata.com/v4/launches/upcoming`)
       console.log("daysInCurrentMonth", daysInCurrentMonth);
 
       console.log("launchDates", launchDates);
+
+      console.log(monthNow);
     };
 
     // render previous and next months
