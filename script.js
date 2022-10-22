@@ -30,6 +30,12 @@ fetch(`https://api.spacexdata.com/v5/launches/upcoming`)
       });
       var currentDate = new Date().toDateString();
 
+      const daysInPreviousMonth = new Date(
+        date.getFullYear(),
+        date.getMonth(),
+        0
+      ).getDate();
+
       const daysInCurrentMonth = new Date(
         date.getFullYear(),
         date.getMonth() + 1,
@@ -80,8 +86,8 @@ fetch(`https://api.spacexdata.com/v5/launches/upcoming`)
 
       let daysHelper = "";
 
-      for (let days = 1; days < indexFirstWeekDay + 1; days++) {
-        daysHelper += `<div class='monthDay'></div>`;
+      for (let days = indexFirstWeekDay; days > 0; days--) {
+        daysHelper += `<div class='prevMonthDay'>${daysInPreviousMonth - days + 1}</div>`;
         document.querySelector(".monthDays").innerHTML = daysHelper;
       }
 
@@ -98,6 +104,19 @@ fetch(`https://api.spacexdata.com/v5/launches/upcoming`)
         }
       }
 
+      const firstDaysNextMonthIndex = new Date(
+        date.getFullYear(),
+        date.getMonth() + 1,
+        0
+      ).getDay();
+
+      const nextMonthFirstDays = 7 - firstDaysNextMonthIndex - 1
+
+      for (let days = 1; days <= nextMonthFirstDays; days++) {
+        daysHelper += `<div class='lastMonthDay'><p>${days}</p></div>`;
+          document.querySelector(".monthDays").innerHTML = daysHelper;
+      }
+
       // debbuging logs
 
       console.log("indexFirstWeekDay", indexFirstWeekDay);
@@ -112,9 +131,13 @@ fetch(`https://api.spacexdata.com/v5/launches/upcoming`)
 
       console.log("daysInCurrentMonth", daysInCurrentMonth);
 
+      console.log("daysInPreviousMonth", daysInPreviousMonth);
+
       console.log("launchDates", launchDates);
 
-      console.log(monthNow);
+      console.log("monthNow", monthNow);
+
+      console.log("firstDaysNextMonthIndex", firstDaysNextMonthIndex);
     };
 
     // render previous and next months
